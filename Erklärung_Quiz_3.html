@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alus Geburtstag</title>
+    <style>
+        body {
+        background-image: url("Bilder/wer-wird-millionaer.jpg");
+        background-size: 600px;
+        background-color: #cccccc;
+        }
+        .Dialog  {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background-size: cover;
+        }
+        .Igel_1 {
+         position: absolute;
+         bottom: 0px;       /* ganz unten */
+         left: 40%;       /* mittig */
+         transform: translateX(-50%); /* exakte Zentrierung */
+         width: 150px;    /* Größe des Igels */
+         height: auto;
+        }
+        .Sprechblase_1 {
+         position: absolute;
+         bottom: 150px;    /* etwas oberhalb des Igels */
+         left: 60%;       /* rechts neben dem Igel */
+         background: white;
+         border: 3px solid black;
+         border-radius: 25px;
+         padding: 20px;
+         max-width: 200px;
+         text-align: center;
+         font-family: sans-serif;
+         font-size: 16px;
+        }
+        Vorzurück {
+                position: absolute;
+                bottom: 50px;
+                left: 20px;
+            }
+
+            .Vorzurück button {
+                padding: 8px 15px;
+                margin: 5px;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+<div class = "Dialog">
+    <div class = Igel_1>
+        <img src="Bilder/Igel_1.png" alt = "Igel" >
+    </div>
+    <div class = "Sprechblase_1" id ="sprechblase">
+        Toll!
+    </div>
+</div>
+<br>
+<div class = "Vorzurück">
+    <button class = "zurück" onclick="zurückText()">zurück</button>
+    <button class = "weiter" onclick="weiterText()">weiter</button>
+</div>
+
+<script>
+    let texte = [
+    "Toll!",
+    "Dieses „Spiralen-System“ entstand durch sexuelle Selektion und Fortpflanzungsstrategien. ",
+    "Es soll verhindern, dass dominante Männchen unkontrolliert alle Weibchen befruchten.",
+    "Nur Männchen, die die „richtige Spirale“ und Timing haben, schaffen es, das Ei zu befruchten."
+    ];
+    let index = 0;
+    function weiterText() {
+    index++;
+    if(index >= texte.length)
+    {
+    window.location.href = "Geschenk_3.html";
+    return;
+    }
+    document.getElementById("sprechblase").innerHTML = texte[index];
+    }
+    function zurückText() {
+    index--;
+    if(index < 0) index = 0;
+    document.getElementById("sprechblase").innerHTML= texte[index];
+
+    }
+</script>
+</body>
+</html>

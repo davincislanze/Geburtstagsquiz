@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quizfragen</title>
+    <style>
+        body {
+                background-image: url("Bilder/wer-wird-millionaer.jpg");
+                background-size: 250px;
+                background-color: #cccccc;
+                color: #FFD700;
+                font-family: Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .QuizBox {
+                background: radial-gradient(circle at top, #001133, #000022);
+                border: 2px solid #FFD700;
+                border-radius: 15px;
+                padding: 20px;
+                width: 600px;
+                text-align: center;
+                position: relative;
+            }
+
+            .Frage {
+                font-size: 20px;
+                margin-bottom: 30px;
+            }
+
+            .Antworten {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* zwei Spalten */
+            grid-gap: 15px; /* Abstand zwischen Buttons */
+            justify-content: center; /* zentriert das Grid horizontal */
+            margin-bottom: 15px;
+            }
+
+            .Antworten button {
+                background-color: #003366;
+                color: #FFD700;
+                font-weight: bold;
+                font-size: 18px;
+                padding: 12px 25px;
+                margin: 10px;
+                border: 2px solid #FFD700;
+                border-radius: 10px;
+                cursor: pointer;
+                min-width: 200px;
+                transition: all 0.2s ease;
+            }
+
+            .Antworten button:hover {
+                background-color: #0055AA;
+                transform: scale(1.05);
+            }
+
+            .correct {
+                background-color: #4CAF50 !important;
+                color: white !important;
+            }
+
+            .wrong {
+                background-color: #f44336 !important;
+                color: white !important;
+            }
+
+            #feedback {
+                margin-top: 15px;
+                font-weight: bold;
+            }
+
+            .Vorzurück {
+                position: absolute;
+                bottom: 20px;
+                left: 20px;
+            }
+
+            .Vorzurück button {
+                padding: 8px 15px;
+                margin: 5px;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+<div class = "QuizBox">
+    <div class = "Frage" id = "frage">
+        Welcher Fortpflanzungsfakt über Tiere trifft zu?
+    </div>
+    <div class = "Antworten" id = "korrekt">
+        <button class = "AnswButton" onclick = "checkAntwort(this,'A')">Fische wechseln die Farbe ihrer Genitalien während der Paarung, um Partner zu finden.</button>
+        <button class = "AnswButton" onclick = "checkAntwort(this, 'B')">Männliche Schnecken trommeln mit ihren Fühlern Liebesbotschaften.</button>
+        <button class = "AnswButton" onclick = "checkAntwort(this,'C')">Männliche Enten haben spiralförmige Penisse, weibliche Enten , geschraubte Vaginas.</button>
+        <button class = "AnswButton" onclick = "checkAntwort(this,'D')">Pinguine haben einen eingebauten Vibrator, um Weibchen zu beeindrucken.</button>
+    </div>
+    <div id="feedback" style="margin-top:10px; font-weight:bold;"></div>
+</div>
+
+<div class = "Vorzurück">
+    <button onclick = "zurück()">zurück</button>
+    <button onclick = "weiter()">weiter</button>
+</div>
+
+<script>
+    function zurück(){
+        window.location.href = "Geburtstag.html";
+    }
+
+    function weiter(){
+        if(feedback.textContent == "Richtig!") {
+        window.location.href = "Erklärung_Quiz_3.html";
+        }
+        else if(feedback.textContent == "Falsch!"){
+            window.location.href = "Überleitung_3.html";
+        }
+    }
+    let korrekt = 'C';
+
+    function checkAntwort(btn, letter) {
+        const feedback = document.getElementById("feedback");
+
+        // Alle Buttons zurücksetzen
+        const buttons = btn.parentElement.querySelectorAll("button");
+        buttons.forEach(b => {
+            b.classList.remove("correct", "wrong");
+        });
+
+        // Prüfen
+        if(letter === korrekt){
+            btn.classList.add("correct");
+            feedback.textContent = "Richtig!";
+            feedback.style.color = "#4CAF50";
+        } else {
+            btn.classList.add("wrong");
+            feedback.textContent = "Falsch!";
+            feedback.style.color = "#f44336";
+        }
+    }
+</script>
+</body>
+</html>
